@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نور - Site Web pour Produits Naturels Tunisiens</title>
+    <style>
+        /* Styles étendus pour le site Web de produits naturels tunisiens */
+
+        /* Styles généraux */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333; /* Default text color */
+            background-color: #f8f8f8; /* Light background color */
+            overflow-x: hidden;
+            transition: background-color 0.5s ease; /* Smooth transition for dark mode */
+        }
+
+        body.dark-mode {
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* White text in dark mode */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* Rounded corners for images */
+            transition: transform 0.3s ease; /* Smooth scaling on hover */
+        }
+
+        img:hover {
+            transform: scale(1.05); /* Slightly larger on hover */
+        }
+
+        /* Styles du header */
+        header {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            border-bottom: 2px solid rgba(221, 221, 221, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease; /* Smooth transition for color changes */
+        }
+
+        .top-bar {
+            background-color: #f4e4d9; /* Soft pastel upper bar */
+            text-align: center;
+            padding: 5px 0;
+            font-size: 14px;
+            color: #c69c6d; /* Rose Gold */
+            font-family: 'TahaOmari', sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #c69c6d; /* Rose Gold */
+            letter-spacing: 1px;
+            font-family: 'TahaOmari', serif; 
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            font-size: 16px;
+            color: #333; 
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'TahaOmari', sans-serif;
+        }
+
+        .nav-links li a:hover {
+            background-color: rgba(198,156,109,0.2); 
+            color: #c69c6d; 
+        }
+
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icons img {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .icons img:hover {
+            opacity: 0.7;
+        }
+
+        /* Dark Mode Toggle */
+        .toggle-dark-mode {
+            cursor: pointer;
+            background-color: #c69c6d; 
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-family: 'TahaOmari', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-dark-mode:hover {
+            background-color: #b08a6c; 
+        }
+
+        /* Search Box Styles */
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 8px 40px 8px 12px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            width: 200px;
+            transition: width 0.4s ease;
+        }
+
+        .search-input:focus {
+            width: 300px;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 100;
+            display: none; /* Initially hidden */
+            max-height: 200px;
+            overflow-y: auto; /* Scrollable */
+        }
+
+        .search-results.show {
+            display: block; /* Show on user input */
+        }
+
+        .search-results div {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .search-results div:hover {
+            background-color: rgba(198,156,109,0.2); 
+        }
+
+        /* Section Hero */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 20px;
+            text-align: left;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            line-height: 1.3;
+            color: #c69c6d; 
+            margin-bottom: 20px;
+            font-family: 'TahaOmari', serif; 
+        }
+
+        .hero-content .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(145deg, #c69c6d, #e8c39c); 
+            color: #ffffff; 
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-family: 'TahaOmari', sans-serif;
+            border: none; 
+        }
+
+        .hero-content .btn:hover {
+            background: linear-gradient(145deg, #b08a6c, #e8c39c); 
+            transform: translateY(-3px);
+        }
+
+        /* Section Catégories */
+        .categories {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px; 
+            margin: 40px auto; 
+        }
+
+        .categories h2 {
+            font-size: 42px;
+            color: #c69c6d; 
+            margin-bottom: 15px;
+            font-family: 'TahaOmari', serif;
+        }
+
+        .categories p {
+            font-size: 18px;
+            color: #666; 
+            margin-bottom: 40px;
+            font-family: 'TahaOmari', sans-serif;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .category-item {
+            text-align: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-item img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .category-item h3 {
+            font-size: 20px;
+            color: #c69c6d; 
+            font-family: 'TahaOmari', serif;
+        }
+
+        /* Section Bestsellers */
+        .bestsellers {
+            padding: 60px 20px;
+            background-color: #f8f8f8;
+        }
+
+        .bestsellers h2 {
+            font-size: 42px;
+            color: #c69c6d; 
+            margin-bottom: 15px;
+            font-family: 'TahaOmari', serif;
+        }
+
+        .bestsellers p {
+            font-size: 18px;
+            color: #666; 
+            margin-bottom: 40px;
+            font-family: 'TahaOmari', sans-serif;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-item {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .product-item:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .product-item img {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .product-item h3 {
+            font-size: 18px;
+            color: #c69c6d; 
+            margin-bottom: 10px;
+            font-family: 'TahaOmari', serif;
+        }
+
+        .product-item p {
+            font-size: 16px;
+            color: #c69c6d; 
+            font-weight: bold;
+            font-family: 'TahaOmari', sans-serif;
+        }
+
+        /* Extra Features Section Styles */
+        .extra-features {
+            padding: 40px 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px; 
+            margin: 40px auto; 
+            text-align: center; /* Center align text for better presentation */
+        }
+
+        .loyalty-card,
+        .subscription-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .loyalty-info,
+        .subscription-info {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .loyalty-info h3,
+        .subscription-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #c69c6d; 
+            font-family: 'TahaOmari', serif;
+        }
+
+        .loyalty-info ul,
+        .subscription-info ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .loyalty-info ul li,
+        .subscription-info ul li {
+            margin-bottom: 10px;
+            color: #666; 
+            font-family: 'TahaOmari', sans-serif;
+        }
+
+        /* Button styling */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(145deg, #c69c6d, #e8c39c); 
+            color: #ffffff; 
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-family: 'TahaOmari', sans-serif;
+            border: none; 
+        }
+
+        .btn:hover {
+            background: linear-gradient(145deg, #b08a6c, #e8c39c); 
+            transform: translateY(-3px);
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: #222;
+            color: #ffffff;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #c69c6d; 
+            font-family: 'TahaOmari', serif;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #cccccc;
+            font-family: 'TahaOmari', sans-serif;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #cccccc;
+            transition: color 0.3s ease;
+            font-family: 'TahaOmari', sans-serif;
+        }
+
+        .footer-section ul li a:hover {
+            color: #c69c6d; 
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            color: #cccccc;
+            border-top: 1px solid #444;
+            margin-top: 40px;
+            font-family: 'TahaOmari', sans-serif;
+        }
+
+        /* Smooth scroll for smooth links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 50px;
+            right: 30px;
+            display: none;
+            background-color: rgba(198, 156, 109, 0.9); 
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: #b08a6c; 
+        }
+
+        /* Accessible focus styles */
+        a:focus,
+        button:focus {
+            outline: 2px solid #c69c6d; 
+            outline-offset: 2px;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            font-size: 24px; 
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #c69c6d; 
+        }
+
+        /* Wishlist Styles */
+        .wishlist-btn {
+            background-color: #c69c6d; 
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .wishlist-btn:hover {
+            background-color: #b08a6c; 
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=TahaOmari&display=swap" rel="stylesheet">
+    <a href="<a href="https://www.yoursite.com/shop" target="_blank">Buy our products now!</a>  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMb/KNs8/8nLZdPqY4LFpIt8bUq0J/O5c8xTm" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <p>Livraison gratuite pour toutes les commandes supérieures à 150 TND</p>
+        </div>
+        <nav class="navbar">
+            <div class="logo"></div>
+            <ul class="nav-links">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Magasin</a></li>
+                <li><a href="#">Catégories</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Pages</a></li>
+            </ul>
+            <div class="icons">
+
+                <!-- Search Box -->
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Rechercher des produits..." aria-label="Rechercher" id="search-input">
+                    <div class="search-results" id="search-results"></div>
+                </div>
+
+                <a href="#" aria-label="Panier"><img src="cart-icon.png" alt="Panier"></a>
+                <a href="#" aria-label="Profil"><img src="user-icon.png" alt="Profil"></a>
+                <button class="toggle-dark-mode" aria-label="Toggle Dark Mode">🌙</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Découvrez Nos Produits Naturels Tunisiens</h1>
+                <a href="#" class="btn">Découvrez Maintenant</a>
+            </div>
+            <div class="hero-image">
+                <img src="first pictures.jpg" alt="Image Héros">
+            </div>
+        </section>
+
+        <section class="categories">
+            <h2>Catégories de Produits</h2>
+            <p>Nos produits sont conçus pour tout le monde.</p>
+            <div class="category-grid">
+                <div class="category-item">
+                    <img src="soins-de-peau.jpg" alt="Soins de Peau">
+                    <h3>Soins de Peau</h3>
+                </div>
+                <div class="category-item">
+                    <img src="soins-de-corps.jpg" alt="Soins de Corps">
+                    <h3>Soins de Corps</h3>
+                </div>
+                <div class="category-item">
+                    <img src="accessoires.jpg" alt="Accessoires">
+                    <h3>Accessoires</h3>
+                </div>
+                <div class="category-item">
+                    <img src="soins-cheveux.jpg" alt="Soins Cheveux">
+                    <h3>Soins Cheveux</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="bestsellers">
+            <h2>Nos Meilleures Ventes</h2>
+            <p>Vous cherchez quelque chose de précis ? Filtrez les produits par catégorie pour trouver le produit idéal.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="produit1.jpg" alt="Huile de Coco Naturelle">
+                    <h3>Huile de Coco Naturelle</h3>
+                    <p>55.00 TND</p>
+                    <button class="wishlist-btn">❤️ Ajouter aux favoris</button> <!-- Wishlist button -->
+                </div>
+                <div class="product-item">
+                    <img src="produit2.jpg" alt="Crème de Karité">
+                    <h3>Crème de Karité</h3>
+                    <p>30.00 TND</p>
+                    <button class="wishlist-btn">❤️ Ajouter aux favoris</button> <!-- Wishlist button -->
+                </div>
+                <div class="product-item">
+                    <img src="produit3.jpg" alt="Crème Hydratante pour le Cuir Chevelu">
+                    <h3>Crème Hydratante pour le Cuir Chevelu</h3>
+                    <p>75.00 TND</p>
+                    <button class="wishlist-btn">❤️ Ajouter aux favoris</button> <!-- Wishlist button -->
+                </div>
+                <div class="product-item">
+                    <img src="produit4.jpg" alt="Peigne Démêlant">
+                    <h3>Peigne Démêlant</h3>
+                    <p>5.00 TND</p>
+                    <button class="wishlist-btn">❤️ Ajouter aux favoris</button> <!-- Wishlist button -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Programme de Fidélité Section -->
+        <section id="loyalty-rewards" class="extra-features">
+            <h2>Programme de Fidélité</h2>
+            <p>Gagnez des points pour chaque achat, avis et référence.</p>
+            <div class="loyalty-card">
+                <div class="loyalty-info">
+                    <h3>Comment ça marche ?</h3>
+                    <ul>
+                        <li>✔️ Inscrivez-vous et commencez à accumuler des points sur chaque achat.</li>
+                        <li>✔️ Obtenez 1 point pour chaque 1 TND dépensé.</li>
+                        <li>✔️ Échangez vos points contre des remises et des offres exclusives.</li>
+                    </ul>
+                </div>
+                <button class="btn">Rejoindre le Programme</button>
+            </div>
+        </section>
+
+        <!-- Enhanced Abonnez-vous à notre Box Mensuelle Section -->
+        <section id="subscription-box" class="extra-features">
+            <h2>Abonnez-vous à notre Box Mensuelle</h2>
+            <p>Recevez chaque mois une sélection de produits naturels choisis spécialement pour vous. Ne manquez pas nos offres exclusives aux abonnés !</p>
+            <div class="subscription-card">
+                <div class="subscription-info">
+                    <h3>Avantages de l'abonnement :</h3>
+                    <ul>
+                        <li>📦 Produits exclusifs chaque mois.</li>
+                        <li>🎁 Réductions sur toutes vos commandes.</li>
+                        <li>🌟 Accès à des promotions réservées aux abonnés.</li>
+                    </ul>
+                </div>
+                <button class="btn">S'abonner</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section à-propos">
+                <h3>À Propos de OB BEAUTY</h3>
+                <p>OB BEAUTY est votre partenaire de confiance pour les soins de peau. Découvrez nos produits naturels pour créer votre routine beauté quotidienne.</p>
+            </div>
+            <div class="footer-section liens">
+                <h3>Liens Rapides</h3>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Magasin</a></li>
+                    <li><a href="#">Catégories</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contactez-Nous</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contactez-Nous</h3>
+                <p>Email : contact@nor.com</p>
+                <p>Téléphone : +216 23 456 789</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 نور. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" title="Retour en haut" aria-label="Retour en haut">↑</button>
+
+    <script>
+        // JavaScript pour le site web de produits naturels tunisiens
+
+        // Toggle Dark Mode
+        const darkModeToggle = document.querySelector('.toggle-dark-mode');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Afficher/masquer le bouton de retour en haut
+        const backToTopBtn = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            backToTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        // Barre de navigation stick
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            header.classList.toggle('stick', window.scrollY > 0);
+        });
+
+        // Navigation fluide pour les liens d'anchor
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({behavior: 'smooth'});
+            });
+        });
+
+        // Effets de survol pour la grille de produits
+        const products = document.querySelectorAll('.product-item');
+        products.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.classList.add('survolé');
+            });
+            item.addEventListener('mouseleave', () => {
+                item.classList.remove('survolé');
+            });
+        });
+
+        // Intelligent Search Feature
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+
+        // Sample products data for search functionality
+        const productsData = [
+            { name: "Huile de Coco Naturelle", price: "55.00 TND" },
+            { name: "Crème de Karité", price: "30.00 TND" },
+            { name: "Crème Hydratante pour le Cuir Chevelu", price: "75.00 TND" },
+            { name: "Peigne Démêlant", price: "5.00 TND" }
+        ];
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            searchResults.innerHTML = '';
+            if (query) {
+                const results = productsData.filter(product => product.name.toLowerCase().includes(query));
+                results.forEach(product => {
+                    const resultItem = document.createElement('div');
+                    resultItem.textContent = `${product.name} - ${product.price}`;
+                    resultItem.onclick = () => addToCart(product);
+                    searchResults.appendChild(resultItem);
+                });
+                searchResults.classList.add('show'); // Show results
+            } else {
+                searchResults.classList.remove('show'); // Hide results
+            }
+        });
+
+        // Function to handle adding items to cart (stub)
+        function addToCart(product) {
+            alert(`Produit ajouté au panier : ${product.name}`);
+        }
+
+        // Automatically sync dark mode with system preferences
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        if (prefersDarkScheme.matches) {
+            document.body.classList.add('dark-mode');
+        }
+
+        prefersDarkScheme.addEventListener("change", e => {
+            if (e.matches) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        });
+    </script>
+</body>
+</html>
